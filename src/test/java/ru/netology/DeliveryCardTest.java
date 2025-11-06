@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import static com.codeborne.selenide.Selenide.$;
 
 
-public class deliveryCardTest {
+public class DeliveryCardTest {
 
     public String generateDate(int days, String pattern) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern(pattern));
@@ -20,7 +20,7 @@ public class deliveryCardTest {
 
     @Test
     void shouldSendForm() {
-        Selenide.open("http://0.0.0.0:9999");
+        Selenide.open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         String planDate = generateDate(5, "dd.MM.yyyy");
         $("[data-test-id=date] input").press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE).setValue(planDate);
